@@ -454,7 +454,7 @@ class UrbanBotTelegram {
                     ...params,
                     caption: message.data.title,
                 }, {
-                    filename: '123.xsls',
+                    ...(message.data.filename ? { filename: message.data.filename } : {}),
                 });
                 (_p = (_o = message.data).onSent) === null || _p === void 0 ? void 0 : _p.call(_o, response);
                 return response;

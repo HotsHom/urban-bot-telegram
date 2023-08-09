@@ -573,7 +573,7 @@ export class UrbanBotTelegram implements UrbanBot<UrbanBotTelegramType> {
                         caption: message.data.title,
                     },
                     {
-                        filename: '123.xsls',
+                        ...(message.data.filename ? { filename: message.data.filename } : {}),
                     },
                 );
 
