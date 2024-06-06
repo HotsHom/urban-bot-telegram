@@ -603,7 +603,8 @@ class UrbanBotTelegram {
         }
     }
     deleteMessage(message) {
-        this.client.deleteMessage(message.meta.chat.id, String(message.meta.message_id));
+        var _a, _b;
+        ((_b = (_a = message === null || message === void 0 ? void 0 : message.meta) === null || _a === void 0 ? void 0 : _a.chat) === null || _b === void 0 ? void 0 : _b.id) && this.client.deleteMessage(message.meta.chat.id, String(message.meta.message_id));
     }
     editMedia(message) {
         const metaToEdit = {

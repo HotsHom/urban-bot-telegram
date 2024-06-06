@@ -772,7 +772,7 @@ export class UrbanBotTelegram implements UrbanBot<UrbanBotTelegramType> {
     }
 
     deleteMessage(message: UrbanExistingMessage<UrbanBotTelegramType>) {
-        this.client.deleteMessage(message.meta.chat.id, String(message.meta.message_id));
+        message?.meta?.chat?.id && this.client.deleteMessage(message.meta.chat.id, String(message.meta.message_id));
     }
 
     editMedia(
