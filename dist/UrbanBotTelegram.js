@@ -381,6 +381,7 @@ class UrbanBotTelegram {
     async sendMessage(message) {
         var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y;
         await this.simulateTyping(message.chat.id, message.data.simulateTyping);
+        await new Promise((resolve) => setTimeout(resolve, 200));
         switch (message.nodeName) {
             case 'urban-text': {
                 const params = (0, format_1.formatParamsForNewMessage)(message);
@@ -542,7 +543,8 @@ class UrbanBotTelegram {
     }
     updateMessage(message) {
         if (message.data.isReplyButtons === true) {
-            throw new Error('Reply buttons can not edited. You could send a new message every time for this message.');
+            console.error('Reply buttons can not edited. You could send a new message every time for this message.');
+            return;
         }
         switch (message.nodeName) {
             case 'urban-text': {

@@ -479,6 +479,7 @@ export class UrbanBotTelegram implements UrbanBot<UrbanBotTelegramType> {
 
     async sendMessage(message: UrbanMessage) {
         await this.simulateTyping(message.chat.id, message.data.simulateTyping);
+        await new Promise<void>((resolve) => setTimeout(resolve, 200));
 
         switch (message.nodeName) {
             case 'urban-text': {
@@ -692,7 +693,8 @@ export class UrbanBotTelegram implements UrbanBot<UrbanBotTelegramType> {
 
     updateMessage(message: UrbanExistingMessage<UrbanBotTelegramType>) {
         if (message.data.isReplyButtons === true) {
-            throw new Error('Reply buttons can not edited. You could send a new message every time for this message.');
+            console.error('Reply buttons can not edited. You could send a new message every time for this message.');
+            return;
         }
 
         switch (message.nodeName) {
