@@ -542,10 +542,10 @@ class UrbanBotTelegram {
         }
     }
     updateMessage(message) {
-        // if (message.data.isReplyButtons === true) {
-        //     console.warn('Reply buttons can not edited. You could send a new message every time for this message.');
-        //     return;
-        // }
+        if (message.data.isReplyButtons === true) {
+            console.warn('Reply buttons can not edited. You could send a new message every time for this message.');
+            return;
+        }
         switch (message.nodeName) {
             case 'urban-text': {
                 const metaToEdit = {
